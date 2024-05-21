@@ -132,7 +132,8 @@ public class BattleField {
     public int calcAttackDamage(Monster fel, int comb){
         int pdmg = (int)((fel.getATK() - this.getMonster().getDFS() + this.playerparty.getPlayerLev() * 10) * this.calcBanishDamage(comb) * 
         Element.elementBoost(fel.getElement(), this.getMonster().getElement()) * this.blurDamage());
-        return Math.max(pdmg, 1);//オリジナル要素。ダメージ計算をフェアにする
+        return Math.max(pdmg, 1);
+        //計算式中の（+ this.playerparty.getPlayerLev() * 10）はオリジナル要素。ダメージ計算をフェアにする
 
         //元の仕様に忠実なダメージ計算式は以下。
         // ((fel.getATK() - this.getMonster().getDFS()) * というダメージ計算式が原因で実プレイ時は3体目以降こちらからのダメージを
