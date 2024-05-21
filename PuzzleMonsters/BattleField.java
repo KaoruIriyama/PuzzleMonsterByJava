@@ -136,7 +136,7 @@ public class BattleField {
 
         //元の仕様に忠実なダメージ計算式は以下。
         // ((fel.getATK() - this.getMonster().getDFS()) * というダメージ計算式が原因で実プレイ時は3体目以降こちらからのダメージを
-        //1ずつしか与えられないクソゲーと化している。
+        //1ずつしか与えられない状態と化している。
         // int pdmg = (int)((fel.getATK() - this.getMonster().getDFS()) * this.calcBanishDamage(comb) * 
         // Element.elementBoost(fel.getElement(), this.getMonster().getElement()) * this.blurDamage());
         // return Math.max(pdmg, 1);
