@@ -1,9 +1,9 @@
 package PuzzleMonsters;
 
+import static PuzzleMonsters.Element.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static PuzzleMonsters.Element.*;
 
 /**
  * ゲームのメインクラス。
@@ -11,7 +11,10 @@ import static PuzzleMonsters.Element.*;
 public class PuzzleMonsters{
     
     public static void main(String[] args) throws Exception{
-        System.out.println("*** Puzzle & Monsters ***");
+    	//コマンドラインイン数なしで起動した場合、プレイヤー名を"ななし"にする
+        String playername = (args.length > 0 ? args[0]:"ななし");
+    	//タイトル表示
+    	System.out.println("*** Puzzle & Monsters ***");
         //味方モンスターのリストを準備
         List<Monster> fellows = new ArrayList<>();
         fellows.add(new Monster("朱雀", 150, 150, FIRE, 25, 10));
@@ -19,7 +22,7 @@ public class PuzzleMonsters{
         fellows.add(new Monster("白虎", 150, 150, WIND, 20, 5));
         fellows.add(new Monster("玄武", 150, 150, EARTH, 20, 15));
         // パーティ生成
-        Party party = new Party(args [0], fellows);
+        Party party = new Party(playername, fellows);
         System.out.println(party.getPlayerName() + "のパーティ(HP=" + party.getPartyHp() + ")はダンジョンに到着した");
         party.showParty(party);
         // 敵モンスターのリストとダンジョンの準備
@@ -89,7 +92,8 @@ public class PuzzleMonsters{
      * @param party
      * @param m
      */
-    public static void onPlayerTurn(BattleField bat, Party party, Monster m){
+    @SuppressWarnings("resource")
+	public static void onPlayerTurn(BattleField bat, Party party, Monster m){
         System.out.println("\n【"+ party.getPlayerName() +"のターン】");
         bat.showBattleField(party);
         String command;
