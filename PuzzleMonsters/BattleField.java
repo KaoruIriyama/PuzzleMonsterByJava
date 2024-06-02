@@ -68,7 +68,7 @@ public class BattleField {
      * @param g
      * @return
      */
-    private char printGem(int g){ return gems[g].getElement().getSymbol();}
+    private String printGem(int g){ return gems[g].dyeGem();}
     /**
      * 
      * @param combo

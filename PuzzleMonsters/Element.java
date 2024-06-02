@@ -4,23 +4,25 @@ public enum Element {
     /** ６つの属性の一覧は以下の通り(カッコ内はそれぞれのフィールド変数symbol(char型)とid(int型))。
      * 火属性('$', 0)、水属性('~', 1)、風属性('@', 2)、土属性('#', 3)、命属性('&', 4)、無属性(' ', 5) 
      */
-    FIRE('$', 0), 
-    WATER('~', 1),
-    WIND('@', 2), 
-    EARTH('#', 3), 
-    LIFE('&', 4), 
-    EMPTY(' ', 5);
+    FIRE('$', 0, "\033[31m"), 
+    WATER('~', 1, "\033[36m"),
+    WIND('@', 2, "\033[32m"), 
+    EARTH('#', 3, "\033[33m"), 
+    LIFE('&', 4, "\033[35m"), 
+    EMPTY(' ', 5, "\033[30m");
     /** 
      * 各属性はフィールドとしてchar型変数symbolとint型変数idをもつ。 
      */
     private char symbol;
     private int id;
+    private String colorcode;//2024/06/01実装 ディスプレイ制御シーケンスにより文字に属性色を付けるためのコード
     /**
      *  Elementのprivateコンストラクタ。 
      */
-    private Element(char symbol, int id) {   //コンストラクタはprivateで宣言
+    private Element(char symbol, int id, String colorcode) {   //コンストラクタはprivateで宣言
         this.symbol = symbol;
         this.id = id;
+        this.colorcode = colorcode;
     }
     /**
      * idを引数にして、対応する属性のElementインスタンスを返す静的メソッド。
@@ -78,5 +80,21 @@ public enum Element {
      * @return　フィールド変数id
      */
     public int getId() { return this.id; }
+    /**
+     * フィールド変数colorcodeのgetterメソッド
+     * @return　フィールド変数colorcode
+     */
+    public String getColorCode() {return this.colorcode;}
+    /** 
+     * 引数1のString型のデータを、引数2のElementが持つ属性色で染めて返すメソッド
+     * 
+     */
+    public String dyeElement(String str){
+        return this.getColorCode() + str + washElement();
+    }
+
+    private static String washElement(){
+        return "\033[39m";//文字色をデフォルトに戻す
+    }
 }
 

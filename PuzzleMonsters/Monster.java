@@ -32,16 +32,17 @@ public Monster(String name, int hp, int maxhp, Element e, int atk, int dfs)
     public int getATK(){return this.atk;}
     public int getDFS(){return this.dfs;}
     /**
-     * 
-     * @return
+    *モンスターの名前をその属性色で染めて返すメソッド。内部でElement列挙型のdyeElement()メソッドを使用
+     * @return　Monster.nameにdyeElement()メソッドを使用したString型インスタンス
      */
     public String printname(){
-        String printname = this.e.getSymbol() + this.getName() + this.e.getSymbol();
+        String printname = this.getElement().dyeElement(
+        		this.getElement().getSymbol() + this.getName() + this.getElement().getSymbol());
         return printname;
     }
     /**
-     * 
-     * @param n
+     * モンスターのHPを加減算するメソッド。
+     * @param n　HPから加減する数値(正の値を与えれば加算、負の値を与えれば減算になる)
      */
     public void calcHp(int n){this.hp = this.hp + n;}
     

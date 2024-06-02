@@ -28,6 +28,15 @@ public class Gem {
         return this.element;
     }
     /**
+     * Gemをその属性色で染めて返すメソッド。内部でElement列挙型のdyeElement()メソッドを使用
+     * @return　そのGemインスタンスにdyeElement()メソッドを使用したString型インスタンス
+     */
+
+    public String dyeGem() {
+    	return this.getElement().dyeElement(String.valueOf(this.getElement().getSymbol()));
+    }
+    
+    /**
      * Gemクラスのequalsメソッド。
      * フィールド変数であるElement列挙型が等値であるとき、そのインスタンスを等しいと判定する。
      */
