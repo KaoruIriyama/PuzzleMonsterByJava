@@ -87,9 +87,9 @@ public class PuzzleMonsters{
         return win;
     }
     /**
-     * 
-     * @param bat
-     * @param party
+     * 味方ターン
+     * @param bat バトルフィールド
+     * @param party パーティー
      * @param m
      */
     @SuppressWarnings("resource")
@@ -108,7 +108,7 @@ public class PuzzleMonsters{
         evaluateGems(bat);
     }
     /**
-     * 
+     * 敵ターン
      * @param party
      * @param m
      * @param bat
@@ -118,7 +118,7 @@ public class PuzzleMonsters{
         doEnemyAttack(party, bat);
     }
     /**
-     * 
+     * パーティアタック
      * @param m
      * @param bat
      * @param fellows
@@ -133,7 +133,7 @@ public class PuzzleMonsters{
         }
     }
     /**
-     * 
+     * 敵アタック
      * @param party
      * @param bat
      */
@@ -143,7 +143,7 @@ public class PuzzleMonsters{
         System.out.println(bat.getMonster().printname() + "の攻撃\n" + pdmg + "のダメージを受けた");
     }
     /**
-     * 
+     * HP回復
      * @param party
      * @param bat
      * @param com
@@ -159,7 +159,7 @@ public class PuzzleMonsters{
             }
     }
     /**
-     * 
+     * コマンドのバリデーション
      * @param command
      * @return 引数commandが判定条件に合っているかどうかの真偽値
      */
